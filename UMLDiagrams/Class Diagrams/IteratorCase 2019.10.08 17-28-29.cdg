@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="IteratorCase">
+  <ClassDiagramComponents>
+    <Class name="AbsNode" package="iteratorcase.datastructure" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="previous" type="INode" visibility="protected"/>
+        <Field name="next" type="INode" visibility="protected"/>
+        <Field name="val" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="val"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="INode" name="previous"/>
+          <Argument type="INode" name="next"/>
+          <Argument type="int" name="val"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPrevious" returnType="INode" visibility="public"/>
+        <Method name="getNext" returnType="INode" visibility="public"/>
+        <Method name="setPrevious" returnType="void" visibility="public">
+          <Argument type="INode" name="previous"/>
+        </Method>
+        <Method name="setNext" returnType="void" visibility="public">
+          <Argument type="INode" name="next"/>
+        </Method>
+        <Method name="getVal" returnType="int" visibility="public"/>
+        <Method name="setVal" returnType="void" visibility="public">
+          <Argument type="int" name="val"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="List" package="iteratorcase.datastructure" visibility="public" xPosition="970.0" yPosition="57.0">
+      <Fields>
+        <Field name="main" type="NodeMain" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="NodeMain" name="main"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIterator" returnType="IIterator" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="NodeAux" package="iteratorcase.datastructure" visibility="public" xPosition="333.0" yPosition="478.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="val"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="INode" name="previous"/>
+          <Argument type="INode" name="next"/>
+          <Argument type="int" name="val"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="NodeMain" package="iteratorcase.datastructure" visibility="public" xPosition="857.0" yPosition="424.0">
+      <Fields>
+        <Field name="previousDown" type="NodeAux" visibility="package"/>
+        <Field name="nextDown" type="NodeAux" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="val"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="NodeAux" name="previousDown"/>
+          <Argument type="NodeAux" name="nextDown"/>
+          <Argument type="INode" name="previous"/>
+          <Argument type="INode" name="next"/>
+          <Argument type="int" name="val"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPreviousDown" returnType="INode" visibility="public"/>
+        <Method name="setPreviousDown" returnType="void" visibility="public">
+          <Argument type="NodeAux" name="previousDown"/>
+        </Method>
+        <Method name="setPrevious" returnType="void" visibility="public">
+          <Argument type="NodeAux" name="previous"/>
+        </Method>
+        <Method name="getNextDown" returnType="INode" visibility="public"/>
+        <Method name="setNextDown" returnType="void" visibility="public">
+          <Argument type="NodeAux" name="nextDown"/>
+        </Method>
+        <Method name="setNext" returnType="void" visibility="public">
+          <Argument type="NodeAux" name="next"/>
+        </Method>
+        <Method name="getIterator" returnType="IIterator" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="IteratorCase" package="iteratorcase" visibility="public" xPosition="38.0" yPosition="478.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="INode" package="iteratorcase.datastructure" visibility="public" xPosition="642.0" yPosition="127.0">
+      <Methods>
+        <Method name="getPrevious" returnType="INode" visibility="public"/>
+        <Method name="setPrevious" returnType="void" visibility="public">
+          <Argument type="INode" name="previous"/>
+        </Method>
+        <Method name="getNext" returnType="INode" visibility="public"/>
+        <Method name="setNext" returnType="void" visibility="public">
+          <Argument type="INode" name="next"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="IAggregate" package="iteratorcase.iterator" visibility="public" xPosition="1243.0" yPosition="214.0">
+      <Methods>
+        <Method name="getIterator" returnType="IIterator" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="IIterator" package="iteratorcase.iterator" visibility="public" xPosition="1547.0" yPosition="185.0">
+      <Methods>
+        <Method name="hasNext" returnType="boolean" visibility="public"/>
+        <Method name="next" returnType="T" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="iteratorcase.datastructure.List" target="iteratorcase.iterator.IAggregate"/>
+    <HasRelation name="next" source="iteratorcase.datastructure.AbsNode" target="iteratorcase.datastructure.INode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.NodeMain" target="iteratorcase.datastructure.INode" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="previous" source="iteratorcase.datastructure.AbsNode" target="iteratorcase.datastructure.INode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="iteratorcase.datastructure.NodeMain" target="iteratorcase.iterator.IAggregate"/>
+    <HasRelation name="previousDown" source="iteratorcase.datastructure.NodeMain" target="iteratorcase.datastructure.NodeAux" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.List" target="iteratorcase.iterator.IIterator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.AbsNode" target="iteratorcase.datastructure.INode" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.NodeMain" target="iteratorcase.iterator.IIterator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.NodeMain" target="iteratorcase.datastructure.NodeAux" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="iteratorcase.datastructure.INode" target="iteratorcase.datastructure.INode" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="iteratorcase.datastructure.NodeAux" target="iteratorcase.datastructure.AbsNode"/>
+    <UseRelation source="iteratorcase.iterator.IAggregate" target="iteratorcase.iterator.IIterator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="iteratorcase.datastructure.AbsNode" target="iteratorcase.datastructure.INode"/>
+    <HasRelation name="main" source="iteratorcase.datastructure.List" target="iteratorcase.datastructure.NodeMain" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nextDown" source="iteratorcase.datastructure.NodeMain" target="iteratorcase.datastructure.NodeAux" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="iteratorcase.datastructure.NodeMain" target="iteratorcase.datastructure.AbsNode"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
